@@ -1,12 +1,16 @@
 #!/bin/bash
 
-docker run --name changethiscontainername \
-  -p changehostport:2368 \
-  -e VIRTUAL_HOST=changethisthostname.de \
-  -e NODE_ENV=production \
-  -v $PWD/content/themes:/usr/src/ghost/content/themes \
-  -v $PWD/content/apps:/usr/src/ghost/content/apps \
-  -v $PWD/content/images:/usr/src/ghost/content/images \
-  -v $PWD/content/data:/usr/src/ghost/content/data \
-  -v $PWD/config:/var/lib/ghost \
-  ghost
+echo "Please enter your webisite name:"
+read website_name
+sed -i s/website_name/$website_name execute.sh
+
+echo "Please enter your webisite url:"
+read website_url
+sed -i s/website_url/$website_url execute.sh
+sed -i s/website_url/$website_url config/config.js
+
+echo "Please enter your port number:"
+read website_port
+sed -i s/website_port/$website_port execute.sh
+
+sh ./setting.sh
